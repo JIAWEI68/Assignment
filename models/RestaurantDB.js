@@ -46,6 +46,10 @@ class RestaurantDB{
     var sql = "SELECT rest.id AS id, rest.name AS name, rest.location AS location, rest.map AS map, rest.telephone_number AS telephone_number, rest.opening_hours AS opening_hours, rest.description AS description, rest.rating AS rating, rest.cuisine AS cuisine, rest.compass_location AS compass_location, rest.title_picture AS title_picture, rest.description_picture AS description_picture FROM reviews.restaurant rest WHERE compass_location = 'West'"
     db.query(sql,callback)
     }
+    search(restaurantName,callback){
+    var sql = "SELECT rest.name,rest.description,rest.rating FROM reviews.restaurant rest WHERE rest.name = ?"
+    db.query(sql,[restaurantName],callback);
+    }
     
 
 }

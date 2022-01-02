@@ -1,5 +1,6 @@
 "use strict";
 const RestaurantDB = require('../models/RestaurantDB');
+const restaurant = require('../models/restaurant')
 
 var restaurantDB = new RestaurantDB();
 
@@ -127,8 +128,20 @@ function getMalayRestaurant(request, respond){
             respond.json(result)
         }
     });
-} 
+}
+
+function search(request,respond){
+    var restaurantName = request.params.name;
+    restaurantDB.search(restaurantName,function(error,result){
+        if(error){
+            respond.json(error);
+        }
+        else{
+            respond.json(result);
+        }
+    })
+}
 module.exports = {getAllRestaurant, getRestaurantCuisine, 
 getNorthRestaurant, getSouthRestaurant, getEastRestaurant, 
 getWestRestaurant, getJapRestaurant, getMalayRestaurant,
-getChineseRestaurant,getIndianRestaurant,getWesternRestaurant};
+getChineseRestaurant,getIndianRestaurant,getWesternRestaurant,search};
