@@ -2,7 +2,7 @@
 const userDB = require("../models/userDB");
 const users = require("../models/users");
 var bcrypt = require('bcryptjs');
-const saltRounds = 10;
+const saltRounds = 5;
 
 var UserDB = new userDB();
 
