@@ -2,6 +2,7 @@
 const userDB = require("../models/userDB");
 const users = require("../models/users");
 var bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 var UserDB = new userDB();
 
@@ -38,25 +39,20 @@ function signUp(request, respond) {
 }
 
 function login(request, respond) {
-  var username = request.params.username;
-  var password = request.params.password;
+  var username = request.body.username;
+  var password = request.body.password;
   UserDB.login(username, function (error, result) {
     if (error) {
       respond.json(error);
     } else {
-      respond.json(result);
-      const hash = result[0].password;
+      const hash = bcrypt.hashSync(password, saltRounds);
       var flag = bcrypt.compareSync(password,hash);
       if(flag){
         respond.json({result:"valid"})
       }
-      else if(flag = 0){
+      else{
         respond.json({result : "incorrect password or username"})
       }
-      else{
-        respond.json({result:"incorrect password"})
-      }
-      respond.json(result);
     }
   });
 }
@@ -112,5 +108,5 @@ module.exports = {
   login,
   updateUser,
   deleteUser,
-  getUser,
+  getUser
 };

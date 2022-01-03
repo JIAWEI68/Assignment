@@ -115,7 +115,7 @@ function getMalayRestaurant(request, respond) {
 }
 
 function search(request, respond) {
-  var restaurantName = request.params.name;
+  var restaurantName = request.body.name;
   restaurantDB.search(restaurantName, function (error, result) {
     if (error) {
       respond.json(error);

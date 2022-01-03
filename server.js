@@ -37,7 +37,7 @@ app.route('/restaurant/malay').get(restaurantController.getMalayRestaurant);
 app.route('/restaurant/chinese').get(restaurantController.getChineseRestaurant);
 app.route('/restaurant/indian').get(restaurantController.getIndianRestaurant);
 app.route('/restaurant/western').get(restaurantController.getWesternRestaurant);
-app.route('/restaurant/search/:name').get(restaurantController.search);
+app.route('/restaurant/search').post(restaurantController.search);
 
 
 
