@@ -1,6 +1,7 @@
 "use strict";
 const userDB = require("../models/userDB");
 const users = require("../models/users");
+var bcrypt = require('bcryptjs');
 
 var UserDB = new userDB();
 
@@ -37,10 +38,24 @@ function signUp(request, respond) {
 }
 
 function login(request, respond) {
-  UserDB.login(function (error, result) {
+  var username = request.params.username;
+  var password = request.params.password;
+  UserDB.login(username, function (error, result) {
     if (error) {
       respond.json(error);
     } else {
+      respond.json(result);
+      const hash = result[0].password;
+      var flag = bcrypt.compareSync(password,hash);
+      if(flag){
+        respond.json({result:"valid"})
+      }
+      else if(flag = 0){
+        respond.json({result : "incorrect password or username"})
+      }
+      else{
+        respond.json({result:"incorrect password"})
+      }
       respond.json(result);
     }
   });

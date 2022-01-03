@@ -17,7 +17,7 @@ app.route('/comments/delete/:id').delete(commentController.deleteComment)
 //users route methods
 app.route('/users').get(usersController.getAllUsers);
 app.route('/users/signup').post(usersController.signUp);
-app.route('/users/login').get(usersController.login)
+app.route('/users/login').post(usersController.login)
 app.route('/users/update/:id').put(usersController.updateUser)
 app.route('/users/delete/:id').delete(usersController.deleteUser);
 app.route('/users/:id').get(usersController.getUser);

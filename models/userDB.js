@@ -26,9 +26,9 @@ class userDB {
       callback
     );
   }
-  login(callback) {
-    var sql = "SELECT username, password from reviews.user";
-    db.query(sql, callback);
+  login(username, callback) {
+    var sql = "SELECT username, password from reviews.user WHERE username = ?";
+    db.query(sql, [username], callback);
   }
   updateUser(users, callback) {
     var sql =
