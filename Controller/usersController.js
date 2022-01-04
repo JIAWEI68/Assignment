@@ -20,7 +20,7 @@ function signUp(request, respond) {
   var user = new users(
     null,
     request.body.username,
-    request.body.password,
+    bcrypt.hashSync(request.body.password),
     request.body.address,
     request.body.firstName,
     request.body.lastName,
@@ -45,7 +45,7 @@ function login(request, respond) {
     if (error) {
       respond.json(error);
     } else {
-      const hash = bcrypt.hashSync(password, saltRounds);
+      const hash = result[0].password
       var flag = bcrypt.compareSync(password,hash);
       if(flag){
         respond.json({result:"valid"})
