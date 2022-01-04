@@ -51,7 +51,7 @@ class userDB {
     );
   }
   deleteUser(UserId, callback) {
-    var sql = "DELETE from user WHERE id = ?";
+    var sql = "DELETE from user WHERE id = ?";w
     return db.query(sql, [UserId], callback);
   }
   getUser(UserId, callback) {

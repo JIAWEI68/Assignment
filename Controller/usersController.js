@@ -48,10 +48,10 @@ function login(request, respond) {
       const hash = result[0].password
       var flag = bcrypt.compareSync(password,hash);
       if(flag){
-        respond.json({result:"valid"})
+        respond.json(result)
       }
       else{
-        respond.json({result : "incorrect password or username"})
+        respond.json({result:"incorrect password"})
       }
     }
   });
@@ -62,7 +62,7 @@ function updateUser(request, respond) {
   var user = new users(
     parseInt(request.params.id),
     request.body.username,
-    request.body.password,
+    bcrypt.hashSync(request.body.password),
     request.body.address,
     request.body.firstName,
     request.body.lastName,
