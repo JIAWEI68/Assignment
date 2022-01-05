@@ -2,9 +2,9 @@
 const userDB = require("../models/userDB");
 const users = require("../models/users");
 var bcrypt = require("bcryptjs");
-const saltRounds = 5;
-
 var UserDB = new userDB();
+var jwt = require('jsonwebticket')
+var secret = "somesecretkeysd"
 
 function getAllUsers(request, respond) {
   UserDB.getAllUsers(function (error, result) {
@@ -49,12 +49,12 @@ function login(request, respond) {
         const hash = result[0].password;
         var flag = bcrypt.compareSync(password, hash);
         if (flag) {
-          respond.json({ result: "valid" });
+          respond.json({ result: "valid"});
         } else {
-          respond.json({ result: "incorrect password" });
+          respond.json({ result: "incorrect password"});
         }
       } else {
-        respond.json({ result: "incorrect username or password" });
+        respond.json({ result: "incorrect username or password"});
       }
     }
   });
