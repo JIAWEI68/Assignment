@@ -1,7 +1,7 @@
 "use strict";
 const userDB = require("../models/userDB");
 const users = require("../models/users");
-var bcrypt = require('bcryptjs');
+var bcrypt = require("bcryptjs");
 const saltRounds = 5;
 
 var UserDB = new userDB();
@@ -45,13 +45,16 @@ function login(request, respond) {
     if (error) {
       respond.json(error);
     } else {
-      const hash = result[0].password
-      var flag = bcrypt.compareSync(password,hash);
-      if(flag){
-        respond.json(result)
-      }
-      else{
-        respond.json({result:"incorrect password"})
+      if (result.length > 0) {
+        const hash = result[0].password;
+        var flag = bcrypt.compareSync(password, hash);
+        if (flag) {
+          respond.json({ result: "valid" });
+        } else {
+          respond.json({ result: "incorrect password" });
+        }
+      } else {
+        respond.json({ result: "incorrect username or password" });
       }
     }
   });
@@ -108,5 +111,5 @@ module.exports = {
   login,
   updateUser,
   deleteUser,
-  getUser
+  getUser,
 };
