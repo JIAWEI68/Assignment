@@ -58,6 +58,10 @@ class userDB {
     var sql = "SELECT * from reviews.user WHERE id = ?";
     return db.query(sql, [UserId], callback);
   }
+  getUserPic(username,callback){
+    var sql = "SELECT distinct username,telephone,picture from reviews.user WHERE username = ?"
+    db.query(sql,[username],callback)
+  }
 }
 
 module.exports = userDB;
