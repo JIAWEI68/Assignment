@@ -3,7 +3,7 @@ const userDB = require("../models/userDB");
 const users = require("../models/users");
 var bcrypt = require("bcryptjs");
 var UserDB = new userDB();
-var jwt = require('jsonwebticket')
+var jwt = require('jsonwebtoken')
 var secret = "somesecretkeysd"
 
 function getAllUsers(request, respond) {
@@ -49,7 +49,8 @@ function login(request, respond) {
         const hash = result[0].password;
         var flag = bcrypt.compareSync(password, hash);
         if (flag) {
-          respond.json({ result: "valid"});
+          var token = jwt.sign(username,secret)
+          respond.json({ result: token});
         } else {
           respond.json({ result: "incorrect password"});
         }
@@ -61,8 +62,7 @@ function login(request, respond) {
 }
 
 function updateUser(request, respond) {
-  var now = new Date();
-  var user = new users(
+    var user = new users(
     parseInt(request.params.id),
     request.body.username,
     bcrypt.hashSync(request.body.password),
@@ -72,16 +72,23 @@ function updateUser(request, respond) {
     request.body.gender,
     request.body.email,
     request.body.phoneNumber,
-    request.body.profilePicture,
-    now.toString()
+    request.body.profilePicture
   );
-  UserDB.updateUser(user, function (error, result) {
-    if (error) {
+    var token = request.body.token; 
+  try{
+    var decoded = jwt.verify(token,secret);
+    UserDB.updateUser(user, function (error, result) {
+      
+      if (error) {
       respond.json(error);
     } else {
-      respond.json(result);
-    }
+      respond.json(result);}
   });
+  }
+  catch(error){
+    respond.json({result:"invalid token"})
+  }
+  
 }
 
 function deleteUser(request, respond) {
@@ -105,6 +112,18 @@ function getUser(request, respond) {
     }
   });
 }
+
+function getUserPic(request, respond){
+  var token = request.body.token;
+  try{
+    var decoded = jwt.verify(token,secret)
+  }
+  catch(err){
+
+  }
+
+ 
+}
 module.exports = {
   getAllUsers,
   signUp,
@@ -113,3 +132,5 @@ module.exports = {
   deleteUser,
   getUser,
 };
+
+
