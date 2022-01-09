@@ -32,12 +32,12 @@ class RestaurantDB {
   }
   getMalayRestaurant(callback) {
     var sql =
-      "SELECT b.id,b.name,b.location,b.map,b.telephone_number,b.opening_hours,b.description,b.rating,b.cuisine,b.compass_location,b.title_picture,b.description_picture FROM reviews.restaurant  WHERE cuisine = 'Malay'";
+      "SELECT b.id,b.name,b.location,b.map,b.telephone_number,b.opening_hours,b.description,b.rating,b.cuisine,b.compass_location,b.title_picture,b.description_picture FROM reviews.restaurant b WHERE cuisine = 'Malay'";
     db.query(sql, callback);
   }
   getNorthRestaurant(callback) {
     var sql =
-      "SELECT c.id,c.name,c.location,c.map,c.telephone_number,c.opening_hours,c.description,c.rating,c.cuisine,c.compass_location,c.title_picture,c.description_picture FROM reviews.restaurant WHERE compass_location = 'North'";
+      "SELECT c.id,c.name,c.location,c.map,c.telephone_number,c.opening_hours,c.description,c.rating,c.cuisine,c.compass_location,c.title_picture,c.description_picture FROM reviews.restaurant c WHERE compass_location = 'North'";
     db.query(sql, callback);
   }
   getSouthRestaurant(callback) {
@@ -57,7 +57,7 @@ class RestaurantDB {
   }
   search(restaurantName, callback) {
     var sql =
-      "SELECT rest.name,rest.description,rest.rating FROM reviews.restaurant rest WHERE rest.name = ?";
+      "SELECT rest.name,rest.description,rest.rating,rest.compass_location FROM reviews.restaurant rest WHERE rest.name = ?";
     db.query(sql, [restaurantName], callback);
   }
 }

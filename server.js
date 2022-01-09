@@ -21,13 +21,13 @@ app.route('/users/login').post(usersController.login)
 app.route('/users/update/:id').put(usersController.updateUser)
 app.route('/users/delete/:id').delete(usersController.deleteUser);
 app.route('/users/:id').get(usersController.getUser);
+app.route('/users/token').post(usersController.getUserToken);
 
 
 
 
 //restaurant route methods
 app.route('/restaurant').get(restaurantController.getAllRestaurant);
-app.route('/restaurant/cuisine').get(restaurantController.getRestaurantCuisine);
 app.route('/restaurant/north').get(restaurantController.getNorthRestaurant);
 app.route('/restaurant/south').get(restaurantController.getSouthRestaurant);
 app.route('/restaurant/east').get(restaurantController.getEastRestaurant);

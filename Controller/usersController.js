@@ -1,10 +1,10 @@
 "use strict";
 const userDB = require("../models/userDB");
 const users = require("../models/users");
-var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 var UserDB = new userDB();
-var jwt = require('jsonwebtoken')
-var secret = "somesecretkeysd"
+var jwt = require('jsonwebtoken');
+var secret = "somesecretkey";
 
 function getAllUsers(request, respond) {
   UserDB.getAllUsers(function (error, result) {
@@ -50,7 +50,7 @@ function login(request, respond) {
         var flag = bcrypt.compareSync(password, hash);
         if (flag) {
           var token = jwt.sign(username,secret)
-          respond.json({ result: token});
+          respond.json({result: token});
         } else {
           respond.json({ result: "incorrect password"});
         }
@@ -62,33 +62,30 @@ function login(request, respond) {
 }
 
 function updateUser(request, respond) {
-    var user = new users(
-    parseInt(request.params.id),
-    request.body.username,
-    bcrypt.hashSync(request.body.password),
-    request.body.address,
-    request.body.firstName,
-    request.body.lastName,
-    request.body.gender,
-    request.body.email,
-    request.body.phoneNumber,
-    request.body.profilePicture
-  );
-    var token = request.body.token; 
-  try{
-    var decoded = jwt.verify(token,secret);
-    UserDB.updateUser(user, function (error, result) {
-      
+    var token = request.body.token;
+    var id = parseInt(request.params.id);
+    var username = request.body.username;
+    var password = bcrypt.hashSync(request.body.password);
+    var address = request.body.address;
+    var firstName = request.body.firstName;
+    var lastName = request.body.lastName;
+    var gender = request.body.gender;
+    var email = request.body.email;
+    var phoneNumber = request.body.phoneNumber;
+    var profilePicture = request.body.profilePicture;
+    try{
+    var decoded = jwt.verify(token,secret); 
+    UserDB.updateUser(username,password,address,firstName,lastName,gender,email,phoneNumber,profilePicture,id,function(error, result){
       if (error) {
       respond.json(error);
-    } else {
-      respond.json(result);}
-  });
-  }
-  catch(error){
-    respond.json({result:"invalid token"})
-  }
-  
+      } 
+      else {
+      respond.json(result);
+      }
+      });}
+      catch(error){
+        respond.json({result : "Invalid token"})
+      }
 }
 
 function deleteUser(request, respond) {
@@ -108,18 +105,25 @@ function getUser(request, respond) {
     if (error) {
       respond.json(error);
     } else {
-      respond.json(result);
+      respond.json(result); 
     }
   });
 }
 
-function getUserPic(request, respond){
+function getUserToken(request, respond){
   var token = request.body.token;
   try{
-    var decoded = jwt.verify(token,secret)
+    var decoded = jwt.verify(token,secret);
+    UserDB.getUserToken(decoded, function (error, result) {
+      if (error) {
+        respond.json(error);
+      } else {
+        respond.json(result);
+      }
+    });
   }
   catch(err){
-
+    respond.json({result:"invalid token"})
   }
 
  
@@ -131,6 +135,7 @@ module.exports = {
   updateUser,
   deleteUser,
   getUser,
+  getUserToken
 };
 
 

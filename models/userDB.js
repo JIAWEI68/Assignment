@@ -30,22 +30,21 @@ class userDB {
     var sql = "SELECT username, password from reviews.user WHERE username = ?";
     db.query(sql, [username], callback);
   }
-  updateUser(users, callback) {
+  updateUser(username,password,address,firstName,lastName,gender,email,phoneNumber,profilePicture,id,callback) {
     var sql =
       "UPDATE reviews.user SET username = ?, password = ?, address = ?, first_name = ?, last_name = ?, gender = ?, email = ?, phone_number = ?, profile_picture = ? WHERE id = ?";
     return db.query(
       sql,
-      [
-        users.getUsername(),
-        users.getPassword(),
-        users.getAddress(),
-        users.getFirstName(),
-        users.getLastName(),
-        users.getGender(),
-        users.getEmail(),
-        users.getPhoneNumber(),
-        users.getProfilePicture(),
-        users.getId(),
+      [ username,
+        password,
+        address,
+        firstName,
+        lastName,
+        gender,
+        email,
+        phoneNumber,
+        profilePicture, 
+        id
       ],
       callback
     );
@@ -58,8 +57,8 @@ class userDB {
     var sql = "SELECT * from reviews.user WHERE id = ?";
     return db.query(sql, [UserId], callback);
   }
-  getUserPic(username,callback){
-    var sql = "SELECT distinct username,telephone,picture from reviews.user WHERE username = ?"
+  getUserToken(username,callback){
+    var sql = "SELECT distinct * from reviews.user WHERE username = ?"
     db.query(sql,[username],callback)
   }
 }
