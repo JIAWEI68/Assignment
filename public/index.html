@@ -2,13 +2,13 @@
 <html lang = "en">
 
 <head>
-    <title>reviews Website</title>
+    <title>reviews</title>
     <meta charset="utf-8">
     <link rel = "stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel = "stylesheet" href = css/mystyle.css>
 </head>
-<body onload="getAllRestaurant()">
+<body onload="getRestaurantData()">
     <!-- Include top navigation here -->
     <div w3-include-html="top-navigation.html"></div>
     <!-- This is the container that holds the initial message, heading, and movies -->
@@ -27,7 +27,7 @@
         <h3 id="summary"></h3>
         </p>
         <!-- Displays thumbnails of the movies here -->
-        <div id="restaurantTableId" class="row"></div>
+        <div id="restaurantTable" class="row"></div>
     </div>
      <!-- Include the restaurant modal here -->
      <div w3-include-html="restaurant.html"></div>
