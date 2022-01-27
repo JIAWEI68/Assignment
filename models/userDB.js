@@ -9,7 +9,7 @@ class userDB {
   }
   signUp(users, callback) {
     var sql =
-      "INSERT INTO user(username,password,address,first_name,last_name,gender,email,phone_number,profile_picture) VALUES (?,?,?,?,?,?,?,?,?)";
+      "INSERT INTO user(username,password,address,first_name,last_name,gender,email,phone_number) VALUES (?,?,?,?,?,?,?,?)";
     db.query(
       sql,
       [
@@ -20,8 +20,7 @@ class userDB {
         users.getLastName(),
         users.getGender(),
         users.getEmail(),
-        users.getPhoneNumber(),
-        users.getProfilePicture(),
+        users.getPhoneNumber()
       ],
       callback
     );
@@ -30,28 +29,27 @@ class userDB {
     var sql = "SELECT username, password from reviews.user WHERE username = ?";
     db.query(sql, [username], callback);
   }
-  updateUser(username,password,address,firstName,lastName,gender,email,phoneNumber,profilePicture,id,callback) {
+  updateUser(username,address,firstName,lastName,gender,email,phoneNumber,profilePicture,id,callback) {
     var sql =
-      "UPDATE reviews.user SET username = ?, password = ?, address = ?, first_name = ?, last_name = ?, gender = ?, email = ?, phone_number = ?, profile_picture = ? WHERE id = ?";
+      "UPDATE reviews.user SET username = ?, address = ?, first_name = ?, last_name = ?, gender = ?, email = ?, phone_number = ?, profile_picture = ? WHERE username = ?";
     return db.query(
       sql,
       [ username,
-        password,
         address,
         firstName,
         lastName,
         gender,
         email,
         phoneNumber,
-        profilePicture, 
-        id
+        profilePicture,
+        username
       ],
       callback
     );
   }
-  deleteUser(UserId, callback) {
-    var sql = "DELETE from user WHERE id = ?";
-    return db.query(sql, [UserId], callback);
+  deleteUser(username, callback) {
+    var sql = "DELETE from user WHERE username = ?";
+    return db.query(sql, [username], callback);
   }
   getUser(UserId, callback) {
     var sql = "SELECT * from reviews.user WHERE id = ?";

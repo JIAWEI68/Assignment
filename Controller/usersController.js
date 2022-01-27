@@ -20,14 +20,13 @@ function signUp(request, respond) {
   var user = new users(
     null,
     request.body.username,
-    bcrypt.hashSync(request.body.password),
+    bcrypt.hashSync(request.body.password,10),
     request.body.address,
     request.body.firstName,
     request.body.lastName,
     request.body.gender,
     request.body.email,
-    request.body.phoneNumber,
-    request.body.profilePicture
+    request.body.phoneNumber
   );
   UserDB.signUp(user, function (error, result) {
     if (error) {
@@ -63,9 +62,8 @@ function login(request, respond) {
 
 function updateUser(request, respond) {
     var token = request.body.token;
-    var id = parseInt(request.params.id);
     var username = request.body.username;
-    var password = bcrypt.hashSync(request.body.password);
+    //var password = bcrypt.hashSync(request.body.password);
     var address = request.body.address;
     var firstName = request.body.firstName;
     var lastName = request.body.lastName;
@@ -75,7 +73,7 @@ function updateUser(request, respond) {
     var profilePicture = request.body.profilePicture;
     try{
     var decoded = jwt.verify(token,secret); 
-    UserDB.updateUser(username,password,address,firstName,lastName,gender,email,phoneNumber,profilePicture,id,function(error, result){
+    UserDB.updateUser(username,address,firstName,lastName,gender,email,phoneNumber,profilePicture,decoded,function(error, result){
       if (error) {
       respond.json(error);
       } 
@@ -89,14 +87,21 @@ function updateUser(request, respond) {
 }
 
 function deleteUser(request, respond) {
-  var userId = request.params.id;
-  UserDB.deleteUser(userId, function (error, result) {
-    if (error) {
+  var token = request.body.token;
+  try{
+    var decoded = jwt.verify(token,secret); 
+    UserDB.UserDB.deleteUser(decoded, function (error, result){
+      if (error) {
       respond.json(error);
-    } else {
+      } 
+      else {
       respond.json(result);
-    }
-  });
+      }
+      });}
+      catch(error){
+        respond.json({result : "Invalid token"})
+      }
+   
 }
 
 function getUser(request, respond) {
