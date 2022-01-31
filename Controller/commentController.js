@@ -24,7 +24,7 @@ function addComment(request, respond) {
     request.body.name,
     request.body.description,
     request.body.rating,
-    request.body.profilePicture,
+    request.body.restaurantName,
     now.toString()
   );
   CommentsDB.addComment(comment, function (error, result) {

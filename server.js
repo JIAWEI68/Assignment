@@ -10,7 +10,7 @@ app.use(express.json());
 
 //comments route methods
 app.route('/comments').get(commentController.getAllComments);
-app.route('/comments/add').post(commentController.addComment);
+app.route('/comments').post(commentController.addComment);
 app.route('/comments/update/:id').put(commentController.updateComment);
 app.route('/comments/delete/:id').delete(commentController.deleteComment)
 

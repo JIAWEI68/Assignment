@@ -1,7 +1,14 @@
-<div class="modal fade " id="registerModal" tabindex="-1" role="dialog">    
-	<div class="modal-dialog modal-sm " role="document">        
-		<div class="modal-content">            
-			<div class="modal-body px-5">                
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <title>reviews</title>
+    <meta charset="utf-8">
+    <link rel = "stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = css/mystyle.css>
+</head>
+<div w3-include-html="top-navigation.html"></div>
 				<span id="message"><form style="border:1px solid #ccc">
           <div class="container">
             <h1>Sign Up</h1>
@@ -30,19 +37,8 @@
             <label for="lastName"><b>Last Name</b></label>
             <input type="text" placeholder="Enter Last Name" id="lastName" required><br>
         
-            <label for="gender"><b>Gender</b></label><br>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gender" value="M">
-              <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gender" value="F">
-              <label class="form-check-label" for="inlineRadio2">Female</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="gender" value="Other">
-              <label class="form-check-label" for="inlineRadio3">Other</label>
-            </div><br>
+            <label for="gender"><b>Gender</b></label>
+            <input type="text" placeholder="Enter Gender" id="gender" required><br>
         
             <label for="email"><b>Email</b></label>
             <input type="email" placeHolder = "Enter Email" id="email" required><br>
@@ -50,19 +46,18 @@
             <label for="phoneNumber"><b>Phone Number</b></label>
             <input type="number" placeholder="Enter Phone Number" id="phoneNumber" required><br>
         
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-        
             <div class="clearfix">
-              <button onclick="registerMe();" type="button" class="signupbtn">Sign Up</button>
+              <button onclick="registerMe();" type="button" class="btn btn-warning">Sign Up</button>
             </div>
           </div>
-        </form></span>                
-			<div class="modal-footer">                    
-				<button type="button" class="btn btn-secondary bg-dark" data-dismiss="modal" style="float: none; margin: 0 auto;">Close</button>                
-			</div>            
-			</div>        
-		</div>    
-	</div>
-</div>
-
-
+        </form></span>                        
+      <script src="https://www.w3schools.com/lib/w3.js"></script>
+      <script>
+          //to bring in other HTML on the fly into this page
+          w3.includeHTML();
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      <script src="https://kit.fontawesome.com/86ec7c1143.js" ></script>
+      <script src="js/register.js"></script>
+    

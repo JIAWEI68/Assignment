@@ -8,7 +8,7 @@ class commentsDB {
   }
   addComment(comments, callback) {
     var sql =
-      "INSERT INTO comment(restaurant_id,user_id,name,description,rating,profile_picture,time_stamp) VALUES (?,?,?,?,?,?,?)";
+      "INSERT INTO comment(restaurant_id,user_id,name,description,rating,restaurant_name,time_stamp) VALUES (?,?,?,?,?,?,?)";
     db.query(
       sql,
       [
@@ -17,7 +17,7 @@ class commentsDB {
         comments.getName(),
         comments.getDescription(),
         comments.getRating(),
-        comments.getProfilePicture(),
+        comments.getRestaurantName(),
         comments.getTimeStamp(),
       ],
       callback

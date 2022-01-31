@@ -4,14 +4,8 @@ function registerMe() {
   signUp.open("POST", "http://127.0.0.1:3030/users/signup", true);
   signUp.setRequestHeader("Content-Type", "application/json");
   signUp.onload = function(){
-    
-    $('#registerModal').modal('hide');
-    $('#successModal').modal('show');
-    console.log("success")
-    document.getElementById("register").style.display="none";
-    document.getElementById("login").style.display="none";
-    document.getElementById("logout").style.display="block";
-    sessionStorage.setItem("token",token.result);
+    console.log("success");
+    window.location.href = "index.html"
   };
 
   var username = document.getElementById("username").value;
@@ -34,4 +28,3 @@ function registerMe() {
   };
   signUp.send(JSON.stringify(payload));
 }
-

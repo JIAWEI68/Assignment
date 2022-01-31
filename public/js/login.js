@@ -7,7 +7,7 @@ function loginMe(){
       $('#loginModal').modal('hide')
       var token = JSON.parse(login.responseText)
       console.log(token.result);
-      if(token.result != 'incorrect password'){
+      if((token.result != 'incorrect password') & (token.result != "incorrect username or password")){
         $('#successModal').modal('show');
         document.getElementById("register").style.display="none";
         document.getElementById("login").style.display="none";
