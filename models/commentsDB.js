@@ -6,19 +6,20 @@ class commentsDB {
     var sql = "SELECT*from reviews.comment";
     db.query(sql, callback);
   }
-  addComment(comments, callback) {
+  addComment(comment, timeStamp, restaurant_name, callback) {
     var sql =
-      "INSERT INTO comment(restaurant_id,user_id,name,description,rating,restaurant_name,time_stamp) VALUES (?,?,?,?,?,?,?)";
+      "INSERT INTO comment(restaurant_id,user_id,name,description,rating,profile_picture,time_stamp,restaurant_name) VALUES (?,?,?,?,?,?,?,?)";
     db.query(
       sql,
       [
-        comments.getRestaurantId(),
-        comments.getUserId(),
-        comments.getName(),
-        comments.getDescription(),
-        comments.getRating(),
-        comments.getRestaurantName(),
-        comments.getTimeStamp(),
+        comment.getRestaurantId(),
+        comment.getUserId(),
+        comment.getName(),
+        comment.getDescription(),
+        comment.getRating(),
+        comment.getProfilePicture(),
+        timeStamp,
+        restaurant_name
       ],
       callback
     );

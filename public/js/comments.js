@@ -57,15 +57,20 @@ function newComment() {
     }
     
 // Submit or send the new comment to the server to be added.
+// Submit or send the new comment to the server to be added.
 function addComment() {
     var comment = new Object();
-    comment.restaurantId = restaurant_array[currentIndex].id;
-    comment.userId = null; // Movie ID is required by server to create new comment 
-    comment.restaurant_name = restaurant_array[currentIndex].name;// Movie title is required by server to create new comment
-    comment.name = document.getElementById("nickname").value; // Value from HTML input text
-    comment.description = document.getElementById("userComments").value; // Value from HTML input text
-    comment.time_stamp = null; // Change the datePosted to null instead of taking the timestamp on the client side;
-    comment.rating = rating;
+    comment.restaurant_id = restaurant_array[currentIndex].id;
+    comment.user_id = 1;
+    comment.name = document.getElementById("nickname").value;
+    comment.description = document.getElementById("userComments").value;
+    comment.rating = rating; // Movie ID is required by server to create new comment 
+    comment.restaurant_name = restaurant_array[currentIndex].name; // Movie title is required by server to create new comment
+     // Value from HTML input text
+     // Value from HTML input text
+    comment.time_stamp = null;
+    comment.profile_picture = null; // Change the datePosted to null instead of taking the timestamp on the client side;
+    console.log(comment);
 
     var postComment = new XMLHttpRequest(); // new HttpRequest instance to send comment
 
@@ -79,6 +84,7 @@ function addComment() {
 // Convert the data in Comment object to JSON format before sending to the server.
     postComment.send(JSON.stringify(comment)); 
 }
+
 function rateIt(element) {
     var num = element.getAttribute("value");
     var classname = element.getAttribute("class");

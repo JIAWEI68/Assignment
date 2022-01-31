@@ -1,7 +1,6 @@
 "use strict";
 const commentsDB = require("../models/commentsDB");
 const comments = require("../models/comments");
-const { TIMESTAMP } = require("mysql/lib/protocol/constants/types");
 
 var CommentsDB = new commentsDB();
 
@@ -17,6 +16,8 @@ function getAllComments(request, respond) {
 
 function addComment(request, respond) {
   var now = new Date().toISOString().slice(0, 19).replace("T", " ");
+  var restaurant_name = request.body.restaurant_name
+  var timeStamp = now.toString();
   var comment = new comments(
     null,
     request.body.restaurantId,
@@ -24,10 +25,9 @@ function addComment(request, respond) {
     request.body.name,
     request.body.description,
     request.body.rating,
-    request.body.restaurantName,
-    now.toString()
   );
-  CommentsDB.addComment(comment, function (error, result) {
+  
+  CommentsDB.addComment(comment, timeStamp, restaurant_name, function (error, result) {
     if (error) {
       respond.json(error);
     } else {

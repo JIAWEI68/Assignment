@@ -8,7 +8,7 @@ class comments {
     name,
     description,
     rating,
-    profile_picutre,
+    profile_picture,
     restaurant_name,
     time_stamp
   ) {
@@ -18,7 +18,7 @@ class comments {
     this.name = name;
     this.description = description;
     this.rating = rating;
-    this.profile_picutre = profile_picutre;
+    this.profile_picutre = profile_picture;
     this.restaurant_name = restaurant_name;
     this.time_stamp = time_stamp;
   }
@@ -41,7 +41,7 @@ class comments {
     return this.rating;
   }
   getProfilePicture() {
-    return this.profile_picutre;
+    return this.profile_picture;
   }
   getRestaurantName(){
     return this.restaurant_name;
@@ -65,10 +65,10 @@ class comments {
     this.rating = rating;
   }
   setProfilePicture(profilePicture) {
-    this.profile_picutre = profilePicture;
+    this.profile_picture = profilePicture;
   }
-  setRestaurantName(restaurantName){
-    this.restaurant_name = restaurantName;
+  setRestaurantName(restaurant_name){
+    this.restaurant_name = restaurant_name;
   }
   setTimeStamp(timeStamp) {
     this.time_stamp = timeStamp;
