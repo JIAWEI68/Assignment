@@ -11,3 +11,4 @@ var popcornBWImage='images/stars BW.png';
 var popcornImage='images/stars WB.png';
 var rating = 0;
 var profile = [];
+var search_result_array = []
