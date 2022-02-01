@@ -135,3 +135,62 @@ function changePopcornImage(num, classTarget) {
             break;
     }
 }
+//This function will hide the existing modal and present a modal with the selected comment
+//so that the user can attempt to change the username, rating or movie review
+function editComment(element) {
+    var item = element.getAttribute("item");
+
+    currentIndex = item;
+
+    document.getElementById("editnickname").value = comment_array[item].name;
+    document.getElementById("edituserComments").value = comment_array[item].description;
+    console.log(comment_array[item].rating);
+    displayColorPopcorn('editpop', comment_array[item].rating);
+}
+
+//This function displayS the correct number of colored popcorn
+//based on the movie rating that is given in the user comment
+function displayColorPopcorn(classname, num) {
+    var pop = document.getElementsByClassName(classname);
+    var classTarget = "." + classname;
+    for (let p of pop) {
+    p.setAttribute("src", popcornBWImage);
+    }
+    changePopcornImage(num, classTarget);
+    }
+    
+//This function sends the Comment data to the server for updating
+function updateComment() {
+    var response = confirm("Are you sure you want to update this comment?");
+    if (response == true) {
+    var edit_comment_url = comment_url + "/" + comment_array[currentIndex].id;
+    var updateComment = new XMLHttpRequest(); // new HttpRequest instance to send request to server
+    updateComment.open("PUT", edit_comment_url, true); //The HTTP method called 'PUT' is used here as we are updating data
+    updateComment.setRequestHeader("Content-Type", "application/json");
+    comment_array[currentIndex].name = document.getElementById("editnickname").value;
+    comment_array[currentIndex].description = document.getElementById("edituserComments").value;
+    comment_array[currentIndex].rating = rating;
+    updateComment.onload = function() {
+    fetchComments();
+    };
+    updateComment.send(JSON.stringify(comment_array[currentIndex]));
+    }
+    }
+    
+    //This function deletes the selected comment in a specific movie
+function deleteComment(element) {
+    var response = confirm("Are you sure you want to delete this comment?");
+
+    if (response == true) {
+        var item = element.getAttribute("item"); //get the current item
+        var delete_comment_url = comment_url + "/" + comment_array[item].id;
+        var eraseComment = new XMLHttpRequest();
+        eraseComment.open("DELETE", delete_comment_url, true);
+        eraseComment.onload = function() {
+            fetchComments();
+        };
+        eraseComment.send();
+    }
+}
+
+

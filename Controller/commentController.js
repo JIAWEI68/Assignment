@@ -45,7 +45,6 @@ function updateComment(request, respond) {
     request.body.name,
     request.body.description,
     request.body.rating,
-    request.body.profilePicture,
     now.toString()
   );
   CommentsDB.updateComment(Comment, function (error, result) {

@@ -11,8 +11,8 @@ app.use(express.json());
 //comments route methods
 app.route('/comments').get(commentController.getAllComments);
 app.route('/comments').post(commentController.addComment);
-app.route('/comments/update/:id').put(commentController.updateComment);
-app.route('/comments/delete/:id').delete(commentController.deleteComment)
+app.route('/comments/:id').put(commentController.updateComment);
+app.route('/comments/:id').delete(commentController.deleteComment)
 
 //users route methods
 app.route('/users').get(usersController.getAllUsers);
