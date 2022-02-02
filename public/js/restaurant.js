@@ -18,8 +18,6 @@ function getRestaurantData() {
   request.send();
 }
 
-
-
 function displayRestaurants(category) {
   var table = document.getElementById("restaurantTable");
   var restaurantCount = 0;
@@ -70,14 +68,7 @@ function showRestaurantDetails(element) {
   document.getElementById("rating").textContent = restaurant_array[item].rating;
   document.getElementById("description").textContent =
     restaurant_array[item].description;
-}
-
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById('my-map'), {
-    center: {lat:restaurant_array[currentIndex].latitude,lng:restaurant_array[currentIndex].longitude},
-    zoom:8
-  });
+  document.getElementById("map").src = restaurant_array[item].map;
 }
 
 //This function opens a new window/tab and loads the
