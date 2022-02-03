@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="index.html"> R.E.V.I.E.W.S </a>
+  <a class="navbar-brand" href="index.html"> <img src="https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-restaurant-mall-xnimrodx-lineal-gradient-xnimrodx.png"/>R.E.V.I.E.W.S </a>
   <button
     class="navbar-toggler"
     type="button"
@@ -11,14 +11,9 @@
 
   <div class="collapse navbar-collapse" id="navbarContent">
     <ul class="navbar-nav ml-auto">
-      <div class="search-container">
-        <form>
-          <input type="text" placeholder="Search.." name="search" id="name" />
-          <button type="button" onclick="getSearchResult()">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
-      </div>
+      <div>
+        <input class="center" type="text" id="restaurantName" onkeyup="searchRestaurants()" placeholder="Search..">
+        </div>
       <li class="nav-item" id="login">
         <a
           class="nav-link"

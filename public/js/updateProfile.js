@@ -1,5 +1,4 @@
 
-
 function encode(){
 
     var selectedfile = document.getElementById('myinput').files;
@@ -11,13 +10,12 @@ function encode(){
             document.getElementById('target').src=profilePicture;
             
         }
-        fileReader.readAsDataURL(imageFile)
+        URL.createObjectURL(imageFile)
     }
 }
 
 function update() {
     var updateUser = new XMLHttpRequest();
-
     updateUser.open("PUT","http://127.0.0.1:3030/users/update",true);
     updateUser.setRequestHeader("Content-Type","application/json");
     updateUser.onload=function (){
@@ -29,7 +27,7 @@ function update() {
     phoneNumber = document.getElementById("phoneNumber").value;
     address = document.getElementById("address").value;
     username = document.getElementById("username").value;
-    if(payload == console.error(413)){
+    if(console == Error){
         alert("Image is too large")
         window.location.href = "edit.html"
     }
