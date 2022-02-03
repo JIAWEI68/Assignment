@@ -1,3 +1,5 @@
+
+
 function encode(){
 
     var selectedfile = document.getElementById('myinput').files;
@@ -27,6 +29,10 @@ function update() {
     phoneNumber = document.getElementById("phoneNumber").value;
     address = document.getElementById("address").value;
     username = document.getElementById("username").value;
+    if(payload == console.error(413)){
+        alert("Imgae is too large")
+        window.location.href = "edit.html"
+    }
 
     var payload = {
         token:token,

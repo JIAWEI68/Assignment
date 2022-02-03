@@ -36,9 +36,9 @@ function displayRestaurants(category) {
       '<div class="card col-md-3" ><img class="card-img-top" src="' +
       thumbnail +
       '" alt="Card image cap">\
-        <div class="card-body"><i class="far fa-comment fa-lg" style="float:left;cursor:pointer" data-toggle="modal" data-target="#commentModal" item="' +
+        <div class="card-body"><button class="button" style= "float: "data-toggle="modal" data-target="#commentModal" item="' +
       count +
-      '" onClick="showComments(this)"></i>\
+      '" onClick="showComments(this)">Reviews</button>\
             <h5 style="padding-left:30px;cursor:pointer" data-toggle = "modal" data-target="#restaurantModal" class="card-title" item="' +
       count +
       '" onClick="showRestaurantDetails(this)">' +
