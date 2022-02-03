@@ -33,7 +33,7 @@ function displayRestaurants(category) {
     console.log(thumbnail);
     var name = restaurant_array[count].name;
     var cell =
-      '<div class="card col-md-3" ><img class="card-img-top" src="' +
+      '<div class="card col-md-3" ><img class="card-img-top" width = "200px" height = "200px" src="' +
       thumbnail +
       '" alt="Card image cap">\
         <div class="card-body"><button class="button" style= "float: "data-toggle="modal" data-target="#commentModal" item="' +

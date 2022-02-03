@@ -30,7 +30,7 @@ function update() {
     address = document.getElementById("address").value;
     username = document.getElementById("username").value;
     if(payload == console.error(413)){
-        alert("Imgae is too large")
+        alert("Image is too large")
         window.location.href = "edit.html"
     }
 
