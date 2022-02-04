@@ -27,10 +27,6 @@ function update() {
     phoneNumber = document.getElementById("phoneNumber").value;
     address = document.getElementById("address").value;
     username = document.getElementById("username").value;
-    if(console == Error){
-        alert("Image is too large")
-        window.location.href = "edit.html"
-    }
 
     var payload = {
         token:token,

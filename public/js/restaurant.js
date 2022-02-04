@@ -33,7 +33,7 @@ function displayRestaurants(category) {
     var name = restaurant_array[count].name;
     var cell =
       '<div class="card col-lg-4 text-center cardBg" >\
-      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
       thumbnail +
       '" alt="Card image cap">\
       <div class = "card-body">\
@@ -97,7 +97,7 @@ function searchRestaurants(category) {
       var name = restaurant_array[count].name;
       var cell =
         '<div class="card col-lg-4 text-center cardBg" >\
-    <img class="card-img-top" width = "200px" height = "200px" src="' +
+    <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
         thumbnail +
         '" alt="Card image cap">\
     <div class = "card-body">\
@@ -137,7 +137,615 @@ function displayIndian() {
               var thumbnail = restaurant_array[count].home_picture;
               var name = restaurant_array[count].name;
               var cell = '<div class="card col-lg-4 text-center cardBg" >\
-              <img class="card-img-top" width = "200px" height = "200px" src="' +
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayChinese() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const chCheck = document.querySelector("#Chinese");
+  console.log(chCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (chCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].cuisine == "Chinese") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayMalay() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const mCheck = document.querySelector("#Malay");
+  console.log(mCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (mCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].cuisine == "Malay") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayWestern() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const wCheck = document.querySelector("#Western");
+  console.log(wCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (wCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].cuisine == "Western") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayJapanese() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const jCheck = document.querySelector("#Japanese");
+  console.log(jCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (jCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].cuisine == "Japanese") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayNorth() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const nCheck = document.querySelector("#North");
+  console.log(nCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (nCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].compass_location == "North") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displaySouth() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const sCheck = document.querySelector("#South");
+  console.log(sCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (sCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].compass_location == "South") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayEast() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const eCheck = document.querySelector("#East");
+  console.log(eCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (eCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].compass_location == "East") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
+              thumbnail +
+              '" alt="Card image cap">\
+              <div class = "card-body">\
+              <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+              count +
+              '" onClick="showRestaurantDetails(this)">' +
+              name +
+              '</h5></div>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+              count +
+              '> Details </a>\
+              <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+              count +
+              "> Reviews </a>\
+              </div>";
+              table.insertAdjacentHTML('beforeend', cell);
+              restaurantCount++;
+
+          }
+      }
+      message = "";
+      document.getElementById("summary").textContent = message;
+      document.getElementById("parent").textContent = "";
+  }
+  else {
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  for (var count = 0; count < totalRestaurants; count ++) {
+      var thumbnail = restaurant_array[count].home_picture;
+      var name = restaurant_array[count].name;
+      var cell = '<div class="card col-lg-4 text-center cardBg" >\
+      <img class="card-img-top" width = "200px" height = "200px" src="' +
+      thumbnail +
+      '" alt="Card image cap">\
+      <div class = "card-body">\
+      <h5 style="cursor:pointer" data-toggle="modal" data-target="#restaurantModal" class="card-title" item="' +
+      count +
+      '" onClick="showRestaurantDetails(this)">' +
+      name +
+      '</h5></div>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#restaurantModal" class="card-title" onClick="showRestaurantDetails(this)" item=' +
+      count +
+      '> Details </a>\
+      <a class = "btn btn-warning cardBg" data-toggle="modal" data-target="#commentModal" class="card-title" onClick="showComments(this)" item=' +
+      count +
+      "> Reviews </a>\
+      </div>";
+      table.insertAdjacentHTML('beforeend', cell);
+      restaurantCount++;
+
+  }
+  message = "";
+  document.getElementById("summary").textContent = message;
+  document.getElementById("parent").textContent = "";
+  }
+}
+
+function displayWest() {
+  var table = document.getElementById("restaurantTable");
+  var restaurantCount = 0;
+  var message = "";
+
+  const wCheck = document.querySelector("#West");
+  console.log(wCheck.checked);
+
+  table.innerHTML = "";
+  totalRestaurants = restaurant_array.length;
+  if (wCheck.checked == true) 
+  {
+      for (var count = 0; count < totalRestaurants; count ++) {
+              if (restaurant_array[count].compass_location == "West") 
+          {
+              var thumbnail = restaurant_array[count].home_picture;
+              var name = restaurant_array[count].name;
+              var cell = '<div class="card col-lg-4 text-center cardBg" >\
+              <img class="card-img-top" width: 100%; width = "200px" height = "200px" src="' +
               thumbnail +
               '" alt="Card image cap">\
               <div class = "card-body">\
@@ -189,7 +797,7 @@ function displayIndian() {
       restaurantCount++;
 
   }
-  message = "Restaurants";
+  message = "";
   document.getElementById("summary").textContent = message;
   document.getElementById("parent").textContent = "";
   }

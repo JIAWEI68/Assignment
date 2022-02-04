@@ -175,6 +175,26 @@ container{
 }
 
 #main{
-  padding-top: 90px;
+  padding-top: 10px;
   padding-left:10px;
+}
+.cardMax {
+  width: 100%;
+}
+
+.carousel .carousel-inner{
+  height:500px
+  }
+  .carousel-inner .carousel-item img{
+  min-height:200px;
+  }
+  
+  @media(max-width:768px){
+  .carousel .carousel-inner{
+  height: auto;
+   }
+  }
+
+.form-group{
+  padding-top: 50px;
 }

@@ -63,3 +63,7 @@ window.location.href = "index.html"
   };
   signUp.send(JSON.stringify(payload));
 }
+
+function closeRegister(){
+  window.location.href = "index.html"
+}
