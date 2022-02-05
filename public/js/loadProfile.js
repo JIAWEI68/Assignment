@@ -6,6 +6,7 @@ $(document).ready(function (){
     getProfile.onload= function (){
         var profile = JSON.parse(getProfile.responseText)
         console.log(getProfile.responseText);
+        id = profile[0].id;
         username = profile[0].username;
         password = profile[0].password;
         address = profile[0].address;
@@ -28,7 +29,9 @@ $(document).ready(function (){
         else{
             document.getElementById('target').src=profilePicture;
         }
+        sessionStorage.setItem("userid",id);
     }
     var payload = {token:token}
     getProfile.send(JSON.stringify(payload));
 })
+

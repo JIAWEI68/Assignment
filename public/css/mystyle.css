@@ -198,3 +198,12 @@ container{
 .form-group{
   padding-top: 50px;
 }
+
+#img{
+  padding-top: 50px;
+  padding-left: 100px;
+}
+
+.row{
+  width: 100%;
+}

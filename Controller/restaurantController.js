@@ -1,6 +1,7 @@
 "use strict";
 const RestaurantDB = require("../models/RestaurantDB");
 const restaurant = require("../models/restaurant");
+const sgMail = require("@sendgrid/mail");
 
 var restaurantDB = new RestaurantDB();
 
@@ -12,6 +13,29 @@ function getAllRestaurant(request, respond) {
       respond.json(result);
     }
   });
+}
+
+function sendEmail(request, respond) {
+  var email = request.body.email;
+  var content = request.body.content;
+  sgMail.setApiKey("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");
+  const msg = {
+    to: email, // Change to your recipient
+    from: "ang.jiawei56@gmail.com", // Change to your verified sender
+    subject: "I hate my life",
+    text: content,
+    html: '<strong>'+ content + '</strong>',
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+      respond.json({result:"success"})
+    })
+    .catch((error) => {
+      console.error(error);
+      respond.json({result:"fail"})
+    });
 }
 
 function getRestaurantCuisine(request, respond) {
@@ -137,4 +161,5 @@ module.exports = {
   getIndianRestaurant,
   getWesternRestaurant,
   search,
+  sendEmail
 };

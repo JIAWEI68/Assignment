@@ -88,20 +88,15 @@ function updateUser(request, respond) {
 
 function deleteUser(request, respond) {
   var token = request.body.token;
-  try{
-    var decoded = jwt.verify(token,secret); 
-    UserDB.UserDB.deleteUser(decoded, function (error, result){
+  UserDB.deleteUser(token, function (error, result){
       if (error) {
       respond.json(error);
       } 
       else {
       respond.json(result);
       }
-      });}
-      catch(error){
-        respond.json({result : "Invalid token"})
-      }
    
+  });
 }
 
 function getUser(request, respond) {

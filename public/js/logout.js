@@ -3,4 +3,5 @@ function logoutMe() {
     $('#login').show();
     $('#logout').hide();
     sessionStorage.removeItem("token");
+    window.location.href = "index.html"
 }

@@ -122,7 +122,7 @@ function searchRestaurants(category) {
 function displayIndian() {
   var table = document.getElementById("restaurantTable");
   var restaurantCount = 0;
-  var message = "";
+
 
   const indCheck = document.querySelector("#Indian");
   console.log(indCheck.checked);
@@ -189,7 +189,7 @@ function displayIndian() {
       restaurantCount++;
 
   }
-  message = "";
+ 
   document.getElementById("summary").textContent = message;
   document.getElementById("parent").textContent = "";
   }
@@ -350,7 +350,6 @@ function displayMalay() {
 function displayWestern() {
   var table = document.getElementById("restaurantTable");
   var restaurantCount = 0;
-  var message = "";
 
   const wCheck = document.querySelector("#Western");
   console.log(wCheck.checked);
@@ -386,8 +385,7 @@ function displayWestern() {
 
           }
       }
-      message = "";
-      document.getElementById("summary").textContent = message;
+      document.getElementById("summary").textContent = "";
       document.getElementById("parent").textContent = "";
   }
   else {
@@ -766,7 +764,7 @@ function displayWest() {
 
           }
       }
-      message = "Restaurants";
+      message = "";
       document.getElementById("summary").textContent = message;
       document.getElementById("parent").textContent = "";
   }
