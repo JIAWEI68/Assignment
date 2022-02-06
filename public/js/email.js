@@ -1,3 +1,4 @@
+//send the email when the user presses send
 function sendEmail(){
     var emailUser = new XMLHttpRequest();
 
@@ -14,12 +15,12 @@ function sendEmail(){
       }
     }
   
-    var email = document.getElementById("email").value;
-    var content = document.getElementById("content").value;
+    var email = document.getElementById("email").value; //get the value of what the user has typed in in mail.html
+    var content = document.getElementById("content").value; 
 
     var payload = {
       email:email,
       content:content
     };
-    emailUser.send(JSON.stringify(payload));
+    emailUser.send(JSON.stringify(payload)); //send the payload
   }

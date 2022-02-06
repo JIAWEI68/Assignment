@@ -8,6 +8,11 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel = "stylesheet" href = css/mystyle.css>
 </head>
+<style>
+    body{
+        background-color: #3977a360;
+    }
+</style>
 <body onload="getRestaurantData(),fetchComments(),searchRestaurants()">
     <!-- Include top navigation here -->
     <div w3-include-html="top-navigation.html"></div>
@@ -35,7 +40,7 @@
         <div id="restaurantTable" class="row"></div>
         
     </div>
-    </div>
+</div>
      <div w3-include-html="comments-modal.html"></div>
      <div w3-include-html="new-comments-modal.html"></div>
      <div w3-include-html="edit-comments-modal.html"></div>
@@ -65,6 +70,10 @@
 <script src="js/userInIndex.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/carousell.js"></script>
+<script>
+    var uname = sessionStorage.getItem("userName")
+    document.getElementById("welcomeMsg").textContent = "Welcome Back " + uname
+</script>
 </html>
 
 

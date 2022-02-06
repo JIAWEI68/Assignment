@@ -22,6 +22,11 @@
       token = sessionStorage.getItem("token");
     </script>
   </head>
+  <style>
+    body{
+        background-color: #3977a360;
+    }
+</style>
   <body>
     <!-- Include top navigation here -->
     <div w3-include-html="top-navigation.html"></div>
@@ -51,7 +56,7 @@
           /><br />
 
           <label for="myinput" class="mt-5">Avartar</label>
-          <input id="myinput" type="file" onchange="encode();" />
+          <input id="myinput" type="file" onchange="encode();"/>
           <button onclick="update();" type="button" class="btn btn-warning">
             Update
           </button>

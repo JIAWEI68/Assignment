@@ -1,5 +1,5 @@
 $('.carousel').carousel({
-    interval: 9000
+    interval: 9000 //indicate the time where the images will change
   })
 
-$('.carousel').carousel('cycle')
+$('.carousel').carousel('cycle') //intiate the cycle

@@ -6,8 +6,7 @@ $(document).ready(function (){
     getProfile.onload= function (){
         var profile = JSON.parse(getProfile.responseText)
         console.log(getProfile.responseText);
-        id = profile[0].id;
-        username = profile[0].username;
+        username = profile[0].username; //indicate that the data in profile array is equals to this.
         password = profile[0].password;
         address = profile[0].address;
         firstName = profile[0].first_name;
@@ -22,14 +21,13 @@ $(document).ready(function (){
         document.getElementById('lastName').value=lastName;
         document.getElementById('email').value=email;
         document.getElementById('phoneNumber').value=phoneNumber;
-        if (profilePicture == null) {
+        if (profilePicture == null) { //set a base image where if there is no image, this image will be shown instead
             console.log("picture null")
             document.getElementById('target').src = "images\\user\\avartar.png";
         }
         else{
-            document.getElementById('target').src=profilePicture;
+            document.getElementById('target').src=profilePicture; //the image of the profile picture set will be shown.
         }
-        sessionStorage.setItem("userid",id);
     }
     var payload = {token:token}
     getProfile.send(JSON.stringify(payload));

@@ -7,7 +7,7 @@ function registerMe() {
     console.log("registerrrrr")
   };
 
-  var username = document.getElementById("username").value;
+  var username = document.getElementById("username").value; //state the values of the registration.
   var password = document.getElementById("password").value;
   var address = document.getElementById("address").value;
   var firstName = document.getElementById("firstName").value;
@@ -15,8 +15,8 @@ function registerMe() {
   var gender = document.getElementById("gender").value;
   var email = document.getElementById("email").value;
   var phoneNumber = document.getElementById("phoneNumber").value;
-  var letters = /^[A-Za-z]+$/;
-if(username == ""){
+  var letters = /^[A-Za-z]+$/; 
+if(username == ""){ //make a checker to ensure that all parts of the registration form is filled up
   alert("Username is required")
 }
 else if(password == ""){
@@ -40,7 +40,7 @@ else if(lastName == ""){
 else if(email==""){
   alert("Email is required")
 }
-else if(letters.test(phoneNumber)){
+else if(letters.test(phoneNumber)){ //to check whether there is letters in phone number
   alert("Only numbers are allowed for phone number")
 }
 else if(phoneNumber == ""){

@@ -15,7 +15,7 @@ function fetchComments() {
 
 //This function is to display all the comments of that movie
 //whenever the user click on the "comment" button
-function showComments(element) {
+function showComments(element) { 
   document.getElementById("emptyComment").innerHTML =
     "No review yet. Create one now";
   var item = element.getAttribute("item");

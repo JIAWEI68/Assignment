@@ -10,6 +10,11 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav moveRight">
+      <li class="welcomeMessage" style = "display: none;" id="welcomeMsg">
+        <h4 id="welcomeMsg">Welcome</h4>
+    </li>
+    </ul>
     <ul class="navbar-nav ml-auto">
       <div>
         <input class="center" type="text" id="restaurantName" onkeyup="searchRestaurants()" placeholder="Search..">
@@ -41,7 +46,7 @@
       </li>
       
       <li class="nav-item" id="logout" style="display: none">
-        <a href="#" onclick="logoutMe();">Log Out</a>
+        <a href="#" onclick="logoutMe();" style="color: rgb(141, 140, 140)">Log Out</a>
       </li>
       <li class="nav-item" class="image">
         <a class="nav-link" href="edit.html"

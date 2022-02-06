@@ -573,7 +573,7 @@ function displayNorth() {
   }
 }
 
-function displaySouth() {
+function displaySouth() { //display the filter result
   var table = document.getElementById("restaurantTable");
   var restaurantCount = 0;
   var message = "";

@@ -22,7 +22,7 @@ function sendEmail(request, respond) {
   const msg = {
     to: email, // Change to your recipient
     from: "ang.jiawei56@gmail.com", // Change to your verified sender
-    subject: "I hate my life",
+    subject: "foodie review",
     text: content,
     html: '<strong>'+ content + '</strong>',
   };
